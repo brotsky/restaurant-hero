@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import useFetch from 'fetch-suspense';
-import { shuffle } from 'lodash';
+import { shuffle, toString } from 'lodash';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { isMobile } from 'react-device-detect';
 
@@ -9,7 +9,7 @@ import { isMobile } from 'react-device-detect';
 // import logo from './logo.svg';
 import './App.css';
 
-const googleSheet = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
+const googleSheet = '/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
 
 const tsvJSON = (tsv) => {
   var lines=tsv.split("\n");
@@ -40,7 +40,7 @@ const MyFetchingComponent = () => {
         <div>
           <h3>{post.Restaurant}</h3>
           <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
-          <h5><a href={`tel:${post.Phone.replace(/\D/g,'')}`}>{post.Phone}</a></h5>
+          <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5>
         </div>
         <InstagramEmbed
           maxWidth={320}
