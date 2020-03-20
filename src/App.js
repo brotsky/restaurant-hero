@@ -70,12 +70,13 @@ function App() {
       <header className="App-header">
         <h1>Restaurant Hero LA</h1>
         <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
+        { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
+              : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
         <hr />
-        { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
-              : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
+        
   <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.<br />We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
         <p>
           {'Website created with ❤️ by '}
