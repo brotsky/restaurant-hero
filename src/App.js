@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import useFetch from 'fetch-suspense';
-import { shuffle, toString } from 'lodash';
+import { shuffle, toString, countBy, trim, orderBy } from 'lodash';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { isMobile } from 'react-device-detect';
 import LazyLoad from 'react-lazyload';
@@ -22,7 +22,7 @@ const tsvJSON = (tsv) => {
 	  var obj = {};
 	  var currentline=lines[i].split("\t");
 	  for(var j=0;j<headers.length;j++){
-		  obj[headers[j]] = currentline[j];
+		  obj[trim(headers[j])] = trim(currentline[j]);
 	  }
 	  result.push(obj);
   }
@@ -31,36 +31,60 @@ const tsvJSON = (tsv) => {
 }
 
 const MyFetchingComponent = () => {
+  const [selectedCity, setSelectedCity] = useState('All');
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
+  const countByCity = countBy(posts, 'City');
+  const cityKeys = Object.keys(countByCity);
+  const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
+  const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
   
-  return posts.map((post, index) => (
+  return (<div>
+    <header id="city-filter">
+      <ul>
+        <li
+          className={selectedCity === 'All' ? 'selected' : ''}
+          onClick={() => setSelectedCity('All')}
+        >All</li>
+        { cities.map((city, index) => (
+          <li
+            key={`city-filter-${index}`}
+            className={selectedCity === city.name ? 'selected' : ''}
+            onClick={() => setSelectedCity(city.name)}
+          >
+            {city.name}
+          </li>
+        ))}
+      </ul>
+    </header>
+    { filteredPosts.map((post, index) => (
     <article key={`post-${index}`}>
-    { post.Instagram !== '' && (
-      <div className="App-header">
-        <div>
-          <h3>{post.Restaurant}</h3>
-          <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
-          <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5>
-        </div>
-        <LazyLoad height={600}>
-          <InstagramEmbed
-            maxWidth={320}
-            url={post.Instagram}
-            hideCaption={true}
-            containerTagName='div'
-            protocol=''
-            injectScript
-            onLoading={() => {}}
-            onSuccess={() => {}}
-            onAfterRender={() => {}}
-            onFailure={() => {}}
-          />
-        </LazyLoad>
-      </div>)
-      }
-    </article>
-  ));
+      { post.Instagram !== '' && (
+        <div className="App-header">
+          <div>
+            <h3>{post.Restaurant}</h3>
+            <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
+            <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5>
+          </div>
+          <LazyLoad height={600}>
+            <InstagramEmbed
+              maxWidth={320}
+              url={post.Instagram}
+              hideCaption={true}
+              containerTagName='div'
+              protocol=''
+              injectScript
+              onLoading={() => {}}
+              onSuccess={() => {}}
+              onAfterRender={() => {}}
+              onFailure={() => {}}
+            />
+          </LazyLoad>
+        </div>)
+        }
+      </article>
+    )) }
+  </div>)
 };
 
 function App() {

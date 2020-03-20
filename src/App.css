@@ -82,3 +82,19 @@ button#submit {
 .modal .modalInner > div {
   box-shadow: 5px 5px 40px #000;
 }
+
+#city-filter ul {
+  padding: 0;
+}
+
+#city-filter ul li {
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#city-filter ul li.selected, #city-filter ul li:hover {
+  text-decoration: underline;
+}
