@@ -27,20 +27,29 @@ const tsvJSON = (tsv) => {
 const MyFetchingComponent = () => {
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
+
+  console.log('posts', posts);
   
-  return posts.map((post, index) => (<InstagramEmbed
-    key={`post-${index}`}
-    maxWidth={320}
-    url={post.Instagram}
-    hideCaption={true}
-    containerTagName='div'
-    protocol=''
-    injectScript
-    onLoading={() => {}}
-    onSuccess={() => {}}
-    onAfterRender={() => {}}
-    onFailure={() => {}}
-  />))
+  return posts.map((post, index) => post.Instagram !== '' && (
+    <div key={`post-${index}`} className="App-header">
+      <div>
+        <h3>{post.Restaurant}</h3>
+        <h5>{post.Location}</h5>
+        <h5>{post.Phone}</h5>
+      </div>
+      <InstagramEmbed
+        maxWidth={320}
+        url={post.Instagram}
+        hideCaption={true}
+        containerTagName='div'
+        protocol=''
+        injectScript
+        onLoading={() => {}}
+        onSuccess={() => {}}
+        onAfterRender={() => {}}
+        onFailure={() => {}}
+      />
+    </div>))
 };
 
 function App() {
