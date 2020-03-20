@@ -60,7 +60,7 @@ function App() {
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
-        <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+  <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.<br />We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
         <p>
           {'Website created with ❤️ by '}
           <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
