@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import useFetch from 'fetch-suspense';
-import { shuffle, toString, countBy, trim, orderBy } from 'lodash';
+import { shuffle, toString, countBy, trim, orderBy, startCase } from 'lodash';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { isMobile } from 'react-device-detect';
 import LazyLoad from 'react-lazyload';
@@ -22,7 +22,9 @@ const tsvJSON = (tsv) => {
 	  var obj = {};
 	  var currentline=lines[i].split("\t");
 	  for(var j=0;j<headers.length;j++){
-		  obj[trim(headers[j])] = trim(currentline[j]);
+      const value = trim(currentline[j]);
+      const key = trim(headers[j]);
+		  obj[key] =  key === 'City' ? startCase(value) : value;
 	  }
 	  result.push(obj);
   }
