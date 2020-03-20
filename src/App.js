@@ -27,15 +27,13 @@ const tsvJSON = (tsv) => {
 const MyFetchingComponent = () => {
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
-
-  console.log('posts', posts);
   
   return posts.map((post, index) => post.Instagram !== '' && (
     <div key={`post-${index}`} className="App-header">
       <div>
         <h3>{post.Restaurant}</h3>
-        <h5>{post.Location}</h5>
-        <h5>{post.Phone}</h5>
+        <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
+        <h5><a href={`tel:${post.Phone.replace(/\D/g,'')}`}>{post.Phone}</a></h5>
       </div>
       <InstagramEmbed
         maxWidth={320}
@@ -57,6 +55,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Restaurant Hero LA</h1>
+        <p>Our mission is to help promote Restaurants in Los Angeles that are affected by COVID-19.</p>
+        <p>If you would like to contribute to the project and are a developer, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
