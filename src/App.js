@@ -93,7 +93,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Restaurant Hero LA</h1>
+        <img className="logo" src="/restaurant-hero-logo.svg" alt="Restaurant Hero LA Logo" />
         <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
         { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
               : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
@@ -103,11 +103,13 @@ function App() {
         <hr />
         
   <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.<br />We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
+  <img className="logo" src="/restaurant-hero-logo.svg" alt="Restaurant Hero LA Logo" />
         <p>
           {'Website created with ❤️ by '}
           <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
           {' & '}
-          <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
+          <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a><br />
+          Special thanks to <a href="https://www.sherrod-designs.com/" target="_blank" rel="noopener noreferrer">Jordana Sherrod</a> for her awesome logo and graphic design contributions.
         </p>
       </header>
       

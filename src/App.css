@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+.logo {
+  height: 200px;
+  margin-right: 20px;
+}
+
+h1 {
+  line-height: 100px;
+}
+
 .App {
   text-align: center;
 }
