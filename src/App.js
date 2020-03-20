@@ -63,9 +63,9 @@ function App() {
         <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
         <p>
           {'Website created with ❤️ by '}
-          <a href="http://gregbaroth.com/" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
+          <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
           {' & '}
-          <a href="https://brandonbrotsky.com/" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
+          <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
         </p>
       </header>
     </div>
