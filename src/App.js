@@ -63,6 +63,7 @@ const MyFetchingComponent = () => {
         <div className="App-header">
           <div>
             <h3>{post.Restaurant}</h3>
+            <h6>{post.Tag}</h6>
             <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
             <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5>
           </div>
