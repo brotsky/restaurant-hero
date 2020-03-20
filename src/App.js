@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import useFetch from 'fetch-suspense';
+import { shuffle } from 'lodash';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -21,7 +22,7 @@ const tsvJSON = (tsv) => {
 	  result.push(obj);
   }
   
-  return result;
+  return shuffle(result);
 }
 
 const MyFetchingComponent = () => {
@@ -55,11 +56,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Restaurant Hero LA</h1>
-        <p>Our mission is to help promote Restaurants in Los Angeles that are affected by COVID-19.</p>
-        <p>If you would like to contribute to the project and are a developer, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
+        <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        <p>
+          {'Website created with ❤️ by '}
+          <a href="http://gregbaroth.com/" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
+          {' & '}
+          <a href="https://brandonbrotsky.com/" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
+        </p>
       </header>
     </div>
   );
