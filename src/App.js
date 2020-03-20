@@ -11,7 +11,7 @@ import './App.css';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
-const googleSheet = '/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
+const googleSheet = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
 
 const tsvJSON = (tsv) => {
   var lines=tsv.split("\n");
