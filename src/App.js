@@ -6,7 +6,6 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { isMobile } from 'react-device-detect';
 import LazyLoad from 'react-lazyload';
 
-// import logo from './logo.svg';
 import './App.css';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
