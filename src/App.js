@@ -9,6 +9,8 @@ import LazyLoad from 'react-lazyload';
 // import logo from './logo.svg';
 import './App.css';
 
+console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
+
 const googleSheet = '/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
 
 const tsvJSON = (tsv) => {
@@ -33,9 +35,9 @@ const MyFetchingComponent = () => {
   const posts = tsvJSON(response);
   
   return posts.map((post, index) => (
-  <>
+    <article key={`post-${index}`}>
     { post.Instagram !== '' && (
-      <div key={`post-${index}`} className="App-header">
+      <div className="App-header">
         <div>
           <h3>{post.Restaurant}</h3>
           <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5>
@@ -49,15 +51,15 @@ const MyFetchingComponent = () => {
             containerTagName='div'
             protocol=''
             injectScript
-            onLoading={() => { console.log('onLoading') }}
-            onSuccess={() => { console.log('onSuccess') }}
-            onAfterRender={() => { console.log('onAfterRender') }}
-            onFailure={() => { console.log('onFailure') }}
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
           />
         </LazyLoad>
       </div>)
       }
-    </>
+    </article>
   ));
 };
 
