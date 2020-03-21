@@ -1,10 +1,10 @@
-## Current Cities that are in development
-Los Angeles, CA
-New York, NY
-Houston, TX
-Rochester, NY
-Austin, TX
-New Jersey
+## Current locations that are in development
+- Los Angeles, CA
+- New York, NY
+- Houston, TX
+- Rochester, NY
+- Austin, TX
+- New Jersey
 
 ## Join the Restaurant Hero Community!
 
