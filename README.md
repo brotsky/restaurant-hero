@@ -1,3 +1,21 @@
+## Current Cities that are in development
+Los Angeles, CA
+New York, NY
+Houston, TX
+Rochester, NY
+Austin, TX
+New Jersey
+
+## Join the Restaurant Hero Community!
+
+Please join our [Slack Community!](https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw)
+
+## Backend / API
+The backend to this is meant to be an MVP and will hopefully get rebuilt by the community. Right now it is a simple Google Sheet for each city. Check out the [Los Angeles Google Sheet](https://docs.google.com/spreadsheets/d/1OeUGyebmq-f2gLiIsukk-hoYu1HuQQUMvcyEBOE0_fY/edit?usp=sharing) as an example.
+
+## Multiple Domains.
+We are using Zeit.co which uses AWS Lambdas behind the scenes and point each location domain to the same project. There is logic based on the host domain _(window.location.host)_
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
