@@ -125,7 +125,7 @@ function App() {
         
   <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
   <p>We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
-  <p>Join our <a href="https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw" target="_blank" rel="noopener noreferrer">Slack channel</a> to collab with our growing community, everyone is welcome!</p>
+  <p>Join the <a href="https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw" target="_blank" rel="noopener noreferrer">Restaurant Hero Slack</a> to collab with our growing community, everyone is welcome!</p>
   <img className="logo" src={logo} alt="Restaurant Hero LA Logo" />
         <p>
           {'Website created with ❤️ by '}
