@@ -1,0 +1,276 @@
+import React, { Suspense, useState } from 'react';
+import InstagramEmbed from 'react-instagram-embed';
+import useFetch from 'fetch-suspense';
+import { shuffle, toString, countBy, trim, orderBy, startCase } from 'lodash';
+import { ReactTypeformEmbed } from 'react-typeform-embed';
+import LazyLoad from 'react-lazyload';
+import './content/styles/bootstrap-4.1.2/bootstrap.min.css'
+import './content/plugins/font-awesome-4.7.0/css/font-awesome.min.css'
+import './content/styles/main_styles.css'
+import './content/styles/responsive.css'
+
+import "./content/js/custom.js"
+import homeImg from './content/images/home.jpg'
+import videoImg from './content/images/video.jpg'
+
+console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
+
+const { host } = window.location;
+
+const googleSheetLA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
+const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a2jeKTk--9jI0Zqdq9h7DbR_lF2Iu5AZwG3ZiPbejaRmJ_0uTiw-6ojM4AVoeBrQJIJwiOgBhG17/pub?gid=0&single=true&output=tsv';
+
+const logoLA = '/restaurant-hero-logo.svg';
+const logoHouston = '/restaurant-hero-logo-houston.svg';
+
+// default to LA
+let googleSheet = googleSheetLA;
+let logo = logoLA;
+if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
+  googleSheet = googleSheetHouston;
+  logo = logoHouston;
+}
+
+// add proxy to avoid CORS issuse
+googleSheet = `https://cors-anywhere.herokuapp.com/${googleSheet}`;
+
+const tsvJSON = (tsv) => {
+  var lines = tsv.split("\n");
+  var result = [];
+  var headers = lines[0].split("\t");
+
+  for (var i = 1; i < lines.length; i++) {
+    var obj = {};
+    var currentline = lines[i].split("\t");
+    for (var j = 0; j < headers.length; j++) {
+      const value = trim(currentline[j]);
+      const key = trim(headers[j]);
+      obj[key] = key === 'City' ? startCase(value) : value;
+    }
+    result.push(obj);
+  }
+
+  return shuffle(result);
+}
+
+const MyFetchingComponent = () => {
+  const [selectedCity, setSelectedCity] = useState('All');
+  const response = useFetch(googleSheet, { method: 'GET' });
+  const posts = tsvJSON(response);
+  const countByCity = countBy(posts, 'City');
+  const cityKeys = Object.keys(countByCity);
+  const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
+  const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
+
+  return (<div>
+    {/* <header id="city-filter">
+      <ul>
+        <li
+          className={selectedCity === 'All' ? 'selected' : ''}
+          onClick={() => setSelectedCity('All')}
+        >All</li>
+        {cities.map((city, index) => (
+          <li
+            key={`city-filter-${index}`}
+            className={selectedCity === city.name ? 'selected' : ''}
+            onClick={() => setSelectedCity(city.name)}
+          >
+            {city.name}
+          </li>
+        ))}
+      </ul>
+    </header> */}
+    {filteredPosts.map((post, index) => (
+      <article key={`post-${index}`}>
+        {post.Instagram !== '' && (
+          
+           <div class="intro">
+           <div class="container">
+             <div class="row card-row" >
+             <div class='col'>
+                  <LazyLoad height={600}>
+                    <InstagramEmbed
+                      maxWidth={320}
+                      url={post.Instagram}
+                      hideCaption={true}
+                      containerTagName='div'
+                      protocol=''
+                      injectScript
+                      onLoading={() => {}}
+                      onSuccess={() => {}}
+                      onAfterRender={() => {}}
+                      onFailure={() => {}}
+                    />
+                  </LazyLoad>
+              </div>
+               <div class="col">
+                 <div class="intro_content">
+                   <div class="intro_title"><h2>{post.Restaurant}</h2></div>
+                   {post.Tag &&  <div class="intro_subtitle page_subtitle">{post.Tag}</div>}
+                   <div class="intro_text">
+                   {post.Location && <h4><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h4>}
+                   {post.Phone && <h4><a href={`tel:${toString(post.Phone).replace(/\D/g, '')}`}>{post.Phone}</a></h4>}
+                   </div>
+                 </div>
+               </div>
+            
+             </div>
+           </div>
+         </div>)
+        }
+      </article>
+    ))}
+  </div>)
+};
+
+function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+  return (
+    
+    <div class="super_container">
+
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                <div class="logo">
+                  <a href="#">
+                    <div>The restaurant</div>
+                    <div>name</div>
+                  </a>
+                </div>
+                <div class="reservations_phone ml-auto" onClick={() => setModalOpen(true)}>Submit a restourant</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <div class="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
+        <div class="hamburger">
+          <div class="menu_toggle d-flex flex-row align-items-center justify-content-start">
+            <span>menu</span>
+            <div class="hamburger_container">
+              <div class="menu_hamburger">
+                <div class="line_1 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
+                <div class="line_2 hamburger_lines" style={{visibility: 'inherit; opacity: 1;'}}></div>
+                <div class="line_3 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* <div class="menu trans_800">
+        <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about us</a></li>
+            <li><a href="menu.html">menu</a></li>
+            <li><a href="#">delivery</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a href="contact.html">contact</a></li>
+          </ul>
+        </div>
+        <div class="menu_reservations_phone ml-auto">Reservations: +34 586 778 8892</div>
+      </div> */}
+
+
+      <div class="home">
+       {/* <img class="parallax-slider" src={homeImg} style={{transform: 'translate3d(0px, -40px, 0px)', position: 'absolute', height: '500px', width: '1903px', maxWidth: 'none' }}/> */}
+        <img src={homeImg} alt="Logo" style={{height: '500px', width: '1903px'}} />
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src={homeImg} data-speed="0.8"></div>
+        <div class="home_container">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="home_content text-center">
+                  <div class="home_subtitle page_subtitle">This space is</div>
+                  <div class="home_title"><h1>An Extraordinery Experience</h1></div>
+                  <div class="home_text ml-auto mr-auto">
+                    <p style={{fontSize: '20pt'}}>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll_icon"></div>
+      </div>
+      
+      <Suspense fallback="Loading...">
+        <MyFetchingComponent />
+      </Suspense>
+
+      <div class="video_section">
+        <div class="background_image" style={{backgroundImage: `url(${videoImg}`}}></div>
+        <div class="video_section_content d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="video_section_title">Food for the soul</div>
+        </div>
+      </div>
+
+      <div class="reservations text-center">
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/reservations.jpg" data-speed="0.8"></div>
+        <div class="container">
+
+        </div>
+      </div>
+
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-3 footer_col">
+              <div class="footer_logo">
+                <div class="footer_logo_title">The restaurant</div>
+                <div class="footer_logo_subtitle">name</div>
+              </div>
+              <div class="copyright">
+                <p style={{lineHeight: 1.2}}>Copyright &copy;All rights reserved </p>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6 footer_col">
+              <div class="footer_about">
+                <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</p>
+              </div>
+            </div>
+
+            <div class="col-lg-3 footer_col">
+              <div class="footer_contact">
+                {/* <ul>
+                  <li class="d-flex flex-row align-items-start justify-content-start">
+                    <div><div class="footer_contact_title">Address:</div></div>
+                    <div class="footer_contact_text">481 Creekside Lane Avila CA 93424</div>
+                  </li>
+                  <li class="d-flex flex-row align-items-start justify-content-start">
+                    <div><div class="footer_contact_title">Address:</div></div>
+                    <div class="footer_contact_text">+53 345 7953 32453</div>
+                  </li>
+                  <li class="d-flex flex-row align-items-start justify-content-start">
+                    <div><div class="footer_contact_title">Address:</div></div>
+                    <div class="footer_contact_text">yourmail@gmail</div>
+                  </li>
+                </ul> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      { modalOpen && <div className={'modal'} onClick={() => setModalOpen(false)}>
+        <div className={'closeButton'} onClick={() => setModalOpen(false)}>X</div>
+        <div className={'modalInner'}>
+          <ReactTypeformEmbed url="https://greg960960.typeform.com/to/HhOIov" />
+        </div>
+      </div> }
+    </div>
+  );
+}
+
+export default Home;
