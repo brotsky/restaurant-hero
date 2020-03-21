@@ -15,10 +15,15 @@ const { host } = window.location;
 const googleSheetLA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
 const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a2jeKTk--9jI0Zqdq9h7DbR_lF2Iu5AZwG3ZiPbejaRmJ_0uTiw-6ojM4AVoeBrQJIJwiOgBhG17/pub?gid=0&single=true&output=tsv';
 
+const logoLA = '/restaurant-hero-logo.svg';
+const logoHouston = '/restaurant-hero-logo-houston.svg';
+
 // default to LA
 let googleSheet = googleSheetLA;
+let logo = logoLA;
 if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
   googleSheet = googleSheetHouston;
+  logo = logoHouston;
 }
 
 // add proxy to avoid CORS issuse
@@ -106,7 +111,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img className="logo" src="/restaurant-hero-logo.svg" alt="Restaurant Hero LA Logo" />
+        <img className="logo" src={logo} alt="Restaurant Hero Logo" />
         <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
         { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
               : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
@@ -116,7 +121,7 @@ function App() {
         <hr />
         
   <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.<br />We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
-  <img className="logo" src="/restaurant-hero-logo.svg" alt="Restaurant Hero LA Logo" />
+  <img className="logo" src={logo} alt="Restaurant Hero LA Logo" />
         <p>
           {'Website created with ❤️ by '}
           <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
