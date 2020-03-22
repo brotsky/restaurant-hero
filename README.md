@@ -18,6 +18,18 @@ We are using Zeit.co which uses AWS Lambdas behind the scenes and point each loc
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Business Logic
+
+### Submitting Restaurants
+
+Submitting restaurants are done by community members/admins to add restaurant in the area that are still serving food.
+
+1. A restaurant is submitted via a Community Google Form.
+2. A moderator/admin verifies/updates the information.
+3. A moderator/admin moves that information from the Community Google Form sheet to the relevant Community GoogleSheet.
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
