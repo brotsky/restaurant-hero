@@ -165,6 +165,9 @@
 	{
 		margin-bottom: 80px;
 	}
+	.home_container {
+		top: 35%;
+	}
 }
 
 /************
@@ -228,6 +231,7 @@
 	.insta iframe { 
 		min-width: 450px !important;
 	}
+
 }
 
 /************
@@ -354,6 +358,10 @@
 	.insta iframe { 
 		min-width: 380px !important;
 	}
+	.home_container {
+		top: 25%;
+	}
+	
 }
 
 /************
@@ -383,6 +391,9 @@
 	.insta iframe { 
 		min-width: 200px !important;
 	}
+	.home_container {
+		top: 15%;
+	}
 }
 
 /************
@@ -393,5 +404,8 @@
 {
 	.insta iframe { 
 		min-width: 200px !important;
+	}
+	.home_container {
+		top: 15%;
 	}
 }
