@@ -22,7 +22,6 @@ const logo = getLogo();
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
-  const [visibleItems, setVisibleItems] = useState(10);
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
   const countByCity = countBy(posts, 'City');
@@ -36,13 +35,13 @@ const MyFetchingComponent = () => {
       <ul>
         <li
           className={selectedCity === 'All' ? 'selected' : ''}
-          onClick={() => { setSelectedCity('All'); setVisibleItems(10); }}
+          onClick={() => { setSelectedCity('All'); }}
         >All</li>
         {cities.map((city, index) => (
           <li
             key={`city-filter-${index}`}
             className={selectedCity === city.name ? 'selected' : ''}
-            onClick={() => { setSelectedCity(city.name); setVisibleItems(10); }}
+            onClick={() => { setSelectedCity(city.name); }}
           >
             {city.name}
           </li>
@@ -51,7 +50,7 @@ const MyFetchingComponent = () => {
     </header>
     </div>
 
-    {filteredPosts.slice(0, visibleItems).map((post, index) => (
+    {filteredPosts.map((post, index) => (
       <article key={`post-${index}`}>
         {post.Instagram !== '' && (
           
@@ -92,12 +91,12 @@ const MyFetchingComponent = () => {
         }
       </article>
     ))}
-    {
+    {/* {
       visibleItems < filteredPosts.length && 
       <div class="container">
         <div class="load-more" onClick={() => setVisibleItems(visibleItems + 10)}>Load more</div>
       </div>
-    }
+    } */}
     
   </div>)
 };
