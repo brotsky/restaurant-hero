@@ -7,52 +7,14 @@ import { isMobile } from 'react-device-detect';
 import LazyLoad from 'react-lazyload';
 
 import './App.css';
+import { getLogo } from './envProperties';
+import { tsvJSON } from './tsvToJson';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
-const { host } = window.location;
-
-const googleSheetLA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
-const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a2jeKTk--9jI0Zqdq9h7DbR_lF2Iu5AZwG3ZiPbejaRmJ_0uTiw-6ojM4AVoeBrQJIJwiOgBhG17/pub?gid=0&single=true&output=tsv';
-const googleSheetNYC = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vReDHUmGFgLUmBw0mja1CB6mutjMvVXQEojFgloRbdVnX6s_FxfS78dswO6lAVXRGgM3vsXKhtULkU0/pub?gid=0&single=true&output=tsv';
-const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTffGfOkLRD87cNhflsYmUDXVK02AKiyxrRJVyLGXzX7652b-qd9w3Gjv9JDW9f6RapKewnigPo0Qrp/pub?gid=0&single=true&output=tsv';
-
-const logoLA = '/restaurant-hero-logo.svg';
-const logoHouston = '/restaurant-hero-logo-houston.svg';
-
 // default to LA
-let googleSheet = googleSheetLA;
-let logo = logoLA;
-if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
-  googleSheet = googleSheetHouston;
-  logo = logoHouston;
-} else if (host === 'nyc.restauranthero.org') {
-  googleSheet = googleSheetNYC;
-} else if (host === 'seattle.restauranthero.org') {
-  googleSheet = googleSheetSeattle;
-}
-
-// add proxy to avoid CORS issuse
-googleSheet = `https://cors-anywhere.herokuapp.com/${googleSheet}`;
-
-const tsvJSON = (tsv) => {
-  var lines=tsv.split("\n");
-  var result = [];
-  var headers=lines[0].split("\t");
-
-  for(var i=1;i<lines.length;i++){
-	  var obj = {};
-	  var currentline=lines[i].split("\t");
-	  for(var j=0;j<headers.length;j++){
-      const value = trim(currentline[j]);
-      const key = trim(headers[j]);
-		  obj[key] =  key === 'City' ? startCase(value) : value;
-	  }
-	  result.push(obj);
-  }
-  
-  return shuffle(result);
-}
+const googleSheet = getGoogleSheetUrl();
+const logo = getLogo();
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
