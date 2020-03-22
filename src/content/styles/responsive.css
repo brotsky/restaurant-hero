@@ -225,6 +225,9 @@
 	{
 		width: 150px;
 	}
+	.insta iframe { 
+		min-width: 450px !important;
+	}
 }
 
 /************
@@ -348,6 +351,9 @@
 	{
 		font-size: 14px;
 	}
+	.insta iframe { 
+		min-width: 380px !important;
+	}
 }
 
 /************
@@ -374,7 +380,9 @@
 
 @media only screen and (max-width: 479px)
 {
-	
+	.insta iframe { 
+		min-width: 200px !important;
+	}
 }
 
 /************
@@ -383,5 +391,7 @@
 
 @media only screen and (max-width: 400px)
 {
-	
+	.insta iframe { 
+		min-width: 200px !important;
+	}
 }

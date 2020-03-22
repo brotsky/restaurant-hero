@@ -63,7 +63,8 @@ const MyFetchingComponent = () => {
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
 
   return (<div>
-    {/* <header id="city-filter">
+    <div class="container">
+    <header id="city-filter">
       <ul>
         <li
           className={selectedCity === 'All' ? 'selected' : ''}
@@ -79,7 +80,8 @@ const MyFetchingComponent = () => {
           </li>
         ))}
       </ul>
-    </header> */}
+    </header>
+    </div>
     {filteredPosts.map((post, index) => (
       <article key={`post-${index}`}>
         {post.Instagram !== '' && (
@@ -91,6 +93,7 @@ const MyFetchingComponent = () => {
                   <LazyLoad height={600}>
                     <InstagramEmbed
                       maxWidth={320}
+                      className="insta"
                       url={post.Instagram}
                       hideCaption={true}
                       containerTagName='div'
