@@ -19,6 +19,8 @@ const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTff
 
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
+const logoSeattle = '/restaurant-hero-logo-seattle.svg';
+const logoNewYork = '/restaurant-hero-logo-new-york.svg';
 
 // default to LA
 let googleSheet = googleSheetLA;
@@ -28,8 +30,10 @@ if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
   logo = logoHouston;
 } else if (host === 'nyc.restauranthero.org') {
   googleSheet = googleSheetNYC;
+  logo = logoNewYork;
 } else if (host === 'seattle.restauranthero.org') {
   googleSheet = googleSheetSeattle;
+  logo = logoSeattle;
 }
 
 // add proxy to avoid CORS issuse
