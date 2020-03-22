@@ -17,6 +17,8 @@ const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a
 const googleSheetNYC = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vReDHUmGFgLUmBw0mja1CB6mutjMvVXQEojFgloRbdVnX6s_FxfS78dswO6lAVXRGgM3vsXKhtULkU0/pub?gid=0&single=true&output=tsv';
 const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTffGfOkLRD87cNhflsYmUDXVK02AKiyxrRJVyLGXzX7652b-qd9w3Gjv9JDW9f6RapKewnigPo0Qrp/pub?gid=0&single=true&output=tsv';
 
+const googleFormLA = 'https://docs.google.com/forms/d/e/1FAIpQLSfQQaZ3WqXUMtZquB18OJ2_CXaGmBqcWVJXW7atLqBGpNgd1w/viewform?usp=sf_link';
+
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
@@ -24,7 +26,9 @@ const logoNewYork = '/restaurant-hero-logo-new-york.svg';
 
 // default to LA
 let googleSheet = googleSheetLA;
+let googleForm = googleFormLA;
 let logo = logoLA;
+
 if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
   googleSheet = googleSheetHouston;
   logo = logoHouston;
@@ -123,8 +127,7 @@ function App() {
       <header className="App-header">
         <img className="logo" src={logo} alt="Restaurant Hero Logo" />
         <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
-        { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
-              : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
+        <a href={googleForm} target="_blank" rel="noopener noreferrer"><button id="submit">Submit a Restaurant</button></a>
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
