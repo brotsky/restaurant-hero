@@ -114,11 +114,7 @@ function Home() {
             <div class="col">
               <div class="header_content d-flex flex-row align-items-center justify-content-start">
                 <div class="logo">
-                  <img className="logo" src='restaurant-hero-pizza.svg' alt="Restaurant Hero Logo" />
-                  <a href="#">
-                    <div>Restaurant</div>
-                    <div>HERO: { getHero() }</div>
-                  </a>
+                  <img className="logo" src={logo} alt="Restaurant Hero Logo" />
                 </div>
                 <div class="reservations_phone ml-auto" onClick={() => setModalOpen(true)}>Submit a restourant</div>
               </div>
@@ -168,12 +164,7 @@ function Home() {
             <div class="row">
               <div class="col">
                 <div class="home_content text-center">
-                  <div class="home_subtitle page_subtitle">This space is</div>
-                  <div class="home_title"><h1>An Extraordinery Experience</h1></div>
-                  <div class="home_text ml-auto mr-auto">
-                    <p style={{fontSize: '20pt'}}>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</p>
-                  </div>
-                  
+                  <div class="home_title"><h2>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</h2></div>
                 </div>
               </div>
             </div>
@@ -186,58 +177,29 @@ function Home() {
         <MyFetchingComponent />
       </Suspense>
 
-      <div class="video_section">
-        <div class="background_image" style={{backgroundImage: `url(${videoImg}`}}></div>
-        <div class="video_section_content d-flex flex-column align-items-center justify-content-center text-center">
-          <div class="video_section_title">Food for the soul</div>
-        </div>
-      </div>
-
-      <div class="reservations text-center">
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/reservations.jpg" data-speed="0.8"></div>
-        <div class="container">
-
-        </div>
-      </div>
-
-
       <footer class="footer">
         <div class="container">
           <div class="row">
 
             <div class="col-lg-3 footer_col">
               <div class="footer_logo">
-                <div class="footer_logo_title">Restaurant</div>
-                <div class="footer_logo_subtitle">HERO: { getHero()}</div>
-              </div>
-              <div class="copyright">
-                <p style={{lineHeight: 1.2}}>Copyright &copy;All rights reserved </p>
+                <img className="logo" src='restaurant-hero-logo-houston.svg' alt="Restaurant Hero Logo" style={{width: '100%'}}/>
               </div>
             </div>
 
 
-            <div class="col-lg-6 footer_col">
+            <div class="col-lg-8 footer_col">
               <div class="footer_about">
-                <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 footer_col">
-              <div class="footer_contact">
-                {/* <ul>
-                  <li class="d-flex flex-row align-items-start justify-content-start">
-                    <div><div class="footer_contact_title">Address:</div></div>
-                    <div class="footer_contact_text">481 Creekside Lane Avila CA 93424</div>
-                  </li>
-                  <li class="d-flex flex-row align-items-start justify-content-start">
-                    <div><div class="footer_contact_title">Address:</div></div>
-                    <div class="footer_contact_text">+53 345 7953 32453</div>
-                  </li>
-                  <li class="d-flex flex-row align-items-start justify-content-start">
-                    <div><div class="footer_contact_title">Address:</div></div>
-                    <div class="footer_contact_text">yourmail@gmail</div>
-                  </li>
-                </ul> */}
+              <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+              <p>We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
+              <p>Join the <a href="https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw" target="_blank" rel="noopener noreferrer">Restaurant Hero Slack</a> to collab with our growing community, everyone is welcome!</p>
+                    <p>
+                      {'Website created with ❤️ by '}
+                      <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
+                      {' & '}
+                      <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a><br />
+                      Special thanks to <a href="https://www.sherrod-designs.com/" target="_blank" rel="noopener noreferrer">Jordana Sherrod</a> for her awesome logo and graphic design contributions.
+                    </p>
               </div>
             </div>
           </div>
