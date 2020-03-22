@@ -116,7 +116,7 @@ function Home() {
                 <div class="logo">
                   <img className="logo" src={logo} alt="Restaurant Hero Logo" />
                 </div>
-                <a class="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a restourant</a>
+                <a class="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a Restaurant</a>
               </div>
             </div>
           </div>
