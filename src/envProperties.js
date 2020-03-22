@@ -24,16 +24,20 @@ if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
 function getEnvProperties () { 
   var properties = {
     logo: logoLA,
+    hero: 'LA',
     googleSheet: googleSheetLA
   };
 
   if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
     properties.googleSheet = googleSheetHouston;
     properties.logo = logoHouston;
+    properties.hero = "HOUSTON"
   } else if (host === 'nyc.restauranthero.org') {
     properties.googleSheet = googleSheetNYC;
+    properties.hero = "NYC"
   } else if (host === 'seattle.restauranthero.org') {
     properties.googleSheet = googleSheetSeattle;
+    properties.hero = "Seattle"
   }
   
   return properties;
@@ -47,6 +51,9 @@ export function getLogo() {
   return getEnvProperties().logo;
 }
 
+export function getHero() {
+  return getEnvProperties().hero;
+}
 
 
 

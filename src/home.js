@@ -13,7 +13,7 @@ import "./content/js/custom.js"
 import homeImg from './content/images/home.jpg'
 import videoImg from './content/images/video.jpg'
 import { tsvJSON } from './tsvToJson';
-import { getGoogleSheetUrl, getLogo } from './envProperties';
+import { getGoogleSheetUrl, getLogo, getHero } from './envProperties';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
@@ -22,6 +22,7 @@ const logo = getLogo();
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
+  const [visibleItems, setVisibleItems] = useState(10);
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
   const countByCity = countBy(posts, 'City');
@@ -35,13 +36,13 @@ const MyFetchingComponent = () => {
       <ul>
         <li
           className={selectedCity === 'All' ? 'selected' : ''}
-          onClick={() => setSelectedCity('All')}
+          onClick={() => { setSelectedCity('All'); setVisibleItems(10); }}
         >All</li>
         {cities.map((city, index) => (
           <li
             key={`city-filter-${index}`}
             className={selectedCity === city.name ? 'selected' : ''}
-            onClick={() => setSelectedCity(city.name)}
+            onClick={() => { setSelectedCity(city.name); setVisibleItems(10); }}
           >
             {city.name}
           </li>
@@ -49,7 +50,8 @@ const MyFetchingComponent = () => {
       </ul>
     </header>
     </div>
-    {filteredPosts.map((post, index) => (
+
+    {filteredPosts.slice(0, visibleItems).map((post, index) => (
       <article key={`post-${index}`}>
         {post.Instagram !== '' && (
           
@@ -83,13 +85,20 @@ const MyFetchingComponent = () => {
                    </div>
                  </div>
                </div>
-            
+              
              </div>
            </div>
          </div>)
         }
       </article>
     ))}
+    {
+      visibleItems < filteredPosts.length && 
+      <div class="container">
+        <div class="load-more" onClick={() => setVisibleItems(visibleItems + 10)}>Load more</div>
+      </div>
+    }
+    
   </div>)
 };
 
@@ -105,9 +114,10 @@ function Home() {
             <div class="col">
               <div class="header_content d-flex flex-row align-items-center justify-content-start">
                 <div class="logo">
+                  <img className="logo" src='restaurant-hero-pizza.svg' alt="Restaurant Hero Logo" />
                   <a href="#">
-                    <div>The restaurant</div>
-                    <div>name</div>
+                    <div>Restaurant</div>
+                    <div>HERO: { getHero() }</div>
                   </a>
                 </div>
                 <div class="reservations_phone ml-auto" onClick={() => setModalOpen(true)}>Submit a restourant</div>
@@ -197,8 +207,8 @@ function Home() {
 
             <div class="col-lg-3 footer_col">
               <div class="footer_logo">
-                <div class="footer_logo_title">The restaurant</div>
-                <div class="footer_logo_subtitle">name</div>
+                <div class="footer_logo_title">Restaurant</div>
+                <div class="footer_logo_subtitle">HERO: { getHero()}</div>
               </div>
               <div class="copyright">
                 <p style={{lineHeight: 1.2}}>Copyright &copy;All rights reserved </p>
