@@ -28,8 +28,6 @@ Submitting restaurants are done by community members/admins to add restaurant in
 2. A moderator/admin verifies/updates the information.
 3. A moderator/admin moves that information from the Community Google Form sheet to the relevant Community GoogleSheet.
 
-
-
 ## Available Scripts
 
 In the project directory, you can run:
