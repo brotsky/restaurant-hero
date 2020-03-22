@@ -123,7 +123,7 @@ function Home() {
       </header>
 
 
-      <div class="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
+      {/* <div class="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
         <div class="hamburger">
           <div class="menu_toggle d-flex flex-row align-items-center justify-content-start">
             <span>menu</span>
@@ -136,7 +136,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
       {/* <div class="menu trans_800">
