@@ -19,6 +19,7 @@ const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTff
 
 const googleFormLA = 'https://docs.google.com/forms/d/e/1FAIpQLSfQQaZ3WqXUMtZquB18OJ2_CXaGmBqcWVJXW7atLqBGpNgd1w/viewform?usp=sf_link';
 const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbdStXoauiBe2G3GlB1gpMJSZyDv4v9iv_SX5KOA/viewform?usp=sf_link';
+const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
 
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
@@ -32,6 +33,7 @@ let logo = logoLA;
 
 if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
   googleSheet = googleSheetHouston;
+  googleForm = googleFormHouston;
   logo = logoHouston;
 } else if (host === 'nyc.restauranthero.org') {
   googleSheet = googleSheetNYC;
