@@ -11,7 +11,6 @@ import './content/styles/responsive.css'
 
 import "./content/js/custom.js"
 import homeImg from './content/images/home.jpg'
-import videoImg from './content/images/video.jpg'
 import { tsvJSON } from './tsvToJson';
 import { getGoogleSheetUrl, getLogo, getGoogleForm } from './envProperties';
 
@@ -184,7 +183,7 @@ function Home() {
 
             <div class="col-lg-3 footer_col">
               <div class="footer_logo">
-                <img className="logo" src='restaurant-hero-logo-houston.svg' alt="Restaurant Hero Logo" style={{width: '100%'}}/>
+                <img className="logo" src={logo} alt="Restaurant Hero Logo" style={{width: '100%'}}/>
               </div>
             </div>
 
