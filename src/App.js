@@ -14,6 +14,7 @@ console.log('If you are developer and want to contribute or use this code for yo
 
 // default to LA
 const googleSheet = getGoogleSheetUrl();
+const googleForm = getGoogleForm();
 const logo = getLogo();
 
 const MyFetchingComponent = () => {
@@ -81,8 +82,7 @@ function App() {
       <header className="App-header">
         <img className="logo" src={logo} alt="Restaurant Hero Logo" />
         <p>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food.</p>
-        { isMobile ? <a href={'https://greg960960.typeform.com/to/HhOIov'}><button id="submit">Submit a Restaurant</button></a>
-              : <button id="submit" onClick={() => setModalOpen(true)}>Submit a Restaurant</button> }
+        <a href={googleForm} target="_blank" rel="noopener noreferrer"><button id="submit">Submit a Restaurant</button></a>
         <Suspense fallback="Loading...">
           <MyFetchingComponent />
         </Suspense>
