@@ -13,10 +13,11 @@ import "./content/js/custom.js"
 import homeImg from './content/images/home.jpg'
 import videoImg from './content/images/video.jpg'
 import { tsvJSON } from './tsvToJson';
-import { getGoogleSheetUrl, getLogo, getHero } from './envProperties';
+import { getGoogleSheetUrl, getLogo, getGoogleForm } from './envProperties';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
+const googleForm = getGoogleForm();
 const googleSheet = getGoogleSheetUrl();
 const logo = getLogo();
 
@@ -116,7 +117,7 @@ function Home() {
                 <div class="logo">
                   <img className="logo" src={logo} alt="Restaurant Hero Logo" />
                 </div>
-                <div class="reservations_phone ml-auto" onClick={() => setModalOpen(true)}>Submit a restourant</div>
+                <a class="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a restourant</a>
               </div>
             </div>
           </div>

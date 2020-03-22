@@ -5,54 +5,48 @@ const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a
 const googleSheetNYC = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vReDHUmGFgLUmBw0mja1CB6mutjMvVXQEojFgloRbdVnX6s_FxfS78dswO6lAVXRGgM3vsXKhtULkU0/pub?gid=0&single=true&output=tsv';
 const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTffGfOkLRD87cNhflsYmUDXVK02AKiyxrRJVyLGXzX7652b-qd9w3Gjv9JDW9f6RapKewnigPo0Qrp/pub?gid=0&single=true&output=tsv';
 
+const googleFormLA = 'https://docs.google.com/forms/d/e/1FAIpQLSfQQaZ3WqXUMtZquB18OJ2_CXaGmBqcWVJXW7atLqBGpNgd1w/viewform?usp=sf_link';
+const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbdStXoauiBe2G3GlB1gpMJSZyDv4v9iv_SX5KOA/viewform?usp=sf_link';
+const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
+
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
-
-// default to LA
-let googleSheet = googleSheetLA;
-let logo = logoLA;
-
-if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
-  googleSheet = googleSheetHouston;
-  logo = logoHouston;
-} else if (host === 'nyc.restauranthero.org') {
-  googleSheet = googleSheetNYC;
-} else if (host === 'seattle.restauranthero.org') {
-  googleSheet = googleSheetSeattle;
-}
+const logoSeattle = '/restaurant-hero-logo-seattle.svg';
+const logoNewYork = '/restaurant-hero-logo-new-york.svg';
 
 function getEnvProperties () { 
   var properties = {
     logo: logoLA,
-    hero: 'LA',
+    googleForm: googleFormLA,
     googleSheet: googleSheetLA
   };
 
   if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
     properties.googleSheet = googleSheetHouston;
+    properties.googleForm = googleFormHouston;
     properties.logo = logoHouston;
-    properties.hero = "HOUSTON"
   } else if (host === 'nyc.restauranthero.org') {
     properties.googleSheet = googleSheetNYC;
-    properties.hero = "NYC"
+    properties.logo = logoNewYork;
   } else if (host === 'seattle.restauranthero.org') {
     properties.googleSheet = googleSheetSeattle;
-    properties.hero = "Seattle"
+    properties.googleForm = googleFormSeattle;
+    properties.logo = logoSeattle;
   }
-  
+
   return properties;
 }
 // add proxy to avoid CORS issuse
 export function getGoogleSheetUrl(){
-  return `https://cors-anywhere.herokuapp.com/${getEnvProperties(),googleSheet}`;
+  return `https://cors-anywhere.herokuapp.com/${getEnvProperties().googleSheet}`;
 }
 
 export function getLogo() {
   return getEnvProperties().logo;
 }
 
-export function getHero() {
-  return getEnvProperties().hero;
+export function getGoogleForm() {
+  return getEnvProperties().googleForm;
 }
 
 
