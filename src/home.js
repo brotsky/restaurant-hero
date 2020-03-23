@@ -19,7 +19,7 @@ console.log('If you are developer and want to contribute or use this code for yo
 const googleForm = getGoogleForm();
 const googleSheet = getGoogleSheetUrl();
 const logo = getLogo();
-const DEFAULT_INSTAGRAM_POST = "https://www.instagram.com/p/B-DiFXiFFU6/";
+const DEFAULT_INSTAGRAM_POST = 'https://www.instagram.com/p/B-DiFXiFFU6/';
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
