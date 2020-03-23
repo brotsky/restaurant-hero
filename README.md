@@ -1,11 +1,22 @@
 ## Current locations that are in development
 - Los Angeles, CA
+	- Production: https://restaurantherola.com
+	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=losangeles
 - New York, NY
+	- Production: https://nyc.restauranthero.org
+	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=nyc
 - Houston, TX
+	- Production: https://restaurantherohtx.com
+	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=houston
 - Rochester, NY
+	- Production: Coming Soon...
 - Austin, TX
+	- Production: Coming Soon...
 - New Jersey
+	- Production: Coming Soon...
 - Seattle, WA
+	- Production: https://seattle.restauranthero.org
+	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=seattle
 
 ## Join the Restaurant Hero Community!
 
