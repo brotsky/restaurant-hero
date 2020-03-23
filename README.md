@@ -11,7 +11,9 @@
 Please join our [Slack Community!](https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw)
 
 ## Backend / API
+update: using firebase nosql database to store areas and their perspective locations.
 The backend to this is meant to be an MVP and will hopefully get rebuilt by the community. Right now it is a simple Google Sheet for each city. Check out the [Los Angeles Google Sheet](https://docs.google.com/spreadsheets/d/1OeUGyebmq-f2gLiIsukk-hoYu1HuQQUMvcyEBOE0_fY/edit?usp=sharing) as an example.
+
 
 ## Multiple Domains.
 We are using Zeit.co which uses AWS Lambdas behind the scenes and point each location domain to the same project. There is logic based on the host domain _(window.location.host)_

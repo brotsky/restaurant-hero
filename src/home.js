@@ -9,7 +9,7 @@ import './content/plugins/font-awesome-4.7.0/css/font-awesome.min.css'
 import './content/styles/main_styles.css'
 import './content/styles/responsive.css'
 
-import "./content/js/custom.js"
+import "../content/js/custom.js"
 import homeImg from './content/images/home.jpg'
 import { tsvJSON } from './tsvToJson';
 import { getGoogleSheetUrl, getLogo, getGoogleForm } from './envProperties';

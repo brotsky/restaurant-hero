@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
+    "@types/react": "^16.9.25",
+    "@types/react-dom": "^16.9.5",
     "fetch-suspense": "^1.2.2",
+    "firebase": "^7.12.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.15",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.13.1",
@@ -38,5 +44,12 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://docs.google.com"
+  "proxy": "https://docs.google.com",
+  "devDependencies": {
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
