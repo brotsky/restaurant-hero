@@ -30,7 +30,6 @@ const MyFetchingComponent = () => {
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
  
-
   return (<div>
     <div class="container">
     <header id="city-filter">
