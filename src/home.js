@@ -31,7 +31,7 @@ const MyFetchingComponent = () => {
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
  
   return (<div>
-    <div class="container">
+    <div className="container">
     <header id="city-filter">
       <ul>
         <li
@@ -56,10 +56,10 @@ const MyFetchingComponent = () => {
     return (
       <article key={`post-${index}`}>
           
-           <div class="intro">
-           <div class="container">
-             <div class="row card-row" >
-             <div class='col'>
+           <div className="intro">
+           <div className="container">
+             <div className="row card-row" >
+             <div className='col'>
                   <LazyLoad height={600}>
                     <InstagramEmbed
                       maxWidth={320}
@@ -76,11 +76,11 @@ const MyFetchingComponent = () => {
                     />
                   </LazyLoad>
               </div>
-               <div class="col">
-                 <div class="intro_content">
-                   <div class="intro_title"><h2>{post.Restaurant}</h2></div>
-                   {post.Tag &&  <div class="intro_subtitle page_subtitle">{post.Tag}</div>}
-                   <div class="intro_text">
+               <div className="col">
+                 <div className="intro_content">
+                   <div className="intro_title"><h2>{post.Restaurant}</h2></div>
+                   {post.Tag &&  <div className="intro_subtitle page_subtitle">{post.Tag}</div>}
+                   <div className="intro_text">
                    {post.Location && <h4><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h4>}
                    {post.Phone && <h4><a href={`tel:${toString(post.Phone).replace(/\D/g, '')}`}>{post.Phone}</a></h4>}
                    </div>
@@ -95,8 +95,8 @@ const MyFetchingComponent = () => {
     )})}
     {/* {
       visibleItems < filteredPosts.length && 
-      <div class="container">
-        <div class="load-more" onClick={() => setVisibleItems(visibleItems + 10)}>Load more</div>
+      <div className="container">
+        <div className="load-more" onClick={() => setVisibleItems(visibleItems + 10)}>Load more</div>
       </div>
     } */}
     
@@ -107,17 +107,17 @@ function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     
-    <div class="super_container">
+    <div className="super_container">
 
-      <header class="header">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                <div class="logo">
+      <header className="header">
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <div className="header_content d-flex flex-row align-items-center justify-content-start">
+                <div className="logo">
                   <img className="logo" src={logo} alt="Restaurant Hero Logo" />
                 </div>
-                <a class="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a Restaurant</a>
+                <a className="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a Restaurant</a>
               </div>
             </div>
           </div>
@@ -125,15 +125,15 @@ function Home() {
       </header>
 
 
-      {/* <div class="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
-        <div class="hamburger">
-          <div class="menu_toggle d-flex flex-row align-items-center justify-content-start">
+      {/* <div className="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
+        <div className="hamburger">
+          <div className="menu_toggle d-flex flex-row align-items-center justify-content-start">
             <span>menu</span>
-            <div class="hamburger_container">
-              <div class="menu_hamburger">
-                <div class="line_1 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
-                <div class="line_2 hamburger_lines" style={{visibility: 'inherit; opacity: 1;'}}></div>
-                <div class="line_3 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
+            <div className="hamburger_container">
+              <div className="menu_hamburger">
+                <div className="line_1 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
+                <div className="line_2 hamburger_lines" style={{visibility: 'inherit; opacity: 1;'}}></div>
+                <div className="line_3 hamburger_lines" style={{transform: 'matrix(1, 0, 0, 1, 0, 0);'}}></div>
               </div>
             </div>
           </div>
@@ -141,8 +141,8 @@ function Home() {
       </div> */}
 
 
-      {/* <div class="menu trans_800">
-        <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+      {/* <div className="menu trans_800">
+        <div className="menu_content d-flex flex-column align-items-center justify-content-center text-center">
           <ul>
             <li><a href="index.html">home</a></li>
             <li><a href="about.html">about us</a></li>
@@ -152,45 +152,45 @@ function Home() {
             <li><a href="contact.html">contact</a></li>
           </ul>
         </div>
-        <div class="menu_reservations_phone ml-auto">Reservations: +34 586 778 8892</div>
+        <div className="menu_reservations_phone ml-auto">Reservations: +34 586 778 8892</div>
       </div> */}
 
 
-      <div class="home">
-       {/* <img class="parallax-slider" src={homeImg} style={{transform: 'translate3d(0px, -40px, 0px)', position: 'absolute', height: '500px', width: '1903px', maxWidth: 'none' }}/> */}
+      <div className="home">
+       {/* <img className="parallax-slider" src={homeImg} style={{transform: 'translate3d(0px, -40px, 0px)', position: 'absolute', height: '500px', width: '1903px', maxWidth: 'none' }}/> */}
         <img src={homeImg} alt="Logo" style={{height: '500px', width: '1903px'}} />
-        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src={homeImg} data-speed="0.8"></div>
-        <div class="home_container">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="home_content text-center">
-                  <div class="home_title"><h2>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</h2></div>
+        <div className="parallax_background parallax-window" data-parallax="scroll" data-image-src={homeImg} data-speed="0.8"></div>
+        <div className="home_container">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <div className="home_content text-center">
+                  <div className="home_title"><h2>Our mission is to keep an updated list of restaurants still serving take out / to go during this crazy time. Please support them by ordering their food</h2></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="scroll_icon"></div>
+        <div className="scroll_icon"></div>
       </div>
       
       <Suspense fallback="Loading...">
         <MyFetchingComponent />
       </Suspense>
 
-      <footer class="footer">
-        <div class="container">
-          <div class="row">
+      <footer className="footer">
+        <div className="container">
+          <div className="row">
 
-            <div class="col-lg-3 footer_col">
-              <div class="footer_logo">
+            <div className="col-lg-3 footer_col">
+              <div className="footer_logo">
                 <img className="logo" src={logo} alt="Restaurant Hero Logo" style={{width: '100%'}}/>
               </div>
             </div>
 
 
-            <div class="col-lg-8 footer_col">
-              <div class="footer_about">
+            <div className="col-lg-8 footer_col">
+              <div className="footer_about">
               <p>If you code and would like to contribute to this project, we welcome you to submit a PR on <a href="https://github.com/brotsky/restaurant-hero" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
               <p>We encourage you to fork it and create your own RestaurantHero[major city].com.</p>
               <p>Join the <a href="https://join.slack.com/t/restauranthero/shared_invite/zt-cyzlvdhg-lKSaf2dYg2FGNzXPLRk3Sw" target="_blank" rel="noopener noreferrer">Restaurant Hero Slack</a> to collab with our growing community, everyone is welcome!</p>
