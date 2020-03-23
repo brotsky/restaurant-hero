@@ -89,7 +89,7 @@ const MyFetchingComponent = () => {
               
              </div>
            </div>
-           </div>)
+          </div>)
         }
       </article>
     )})}
