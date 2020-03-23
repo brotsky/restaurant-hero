@@ -126,11 +126,6 @@
 	{
 		display: block;
 	}
-	.main_nav,
-	.reservations_phone
-	{
-		display: none;
-	}
 	.sig_content_container
 	{
 		position: relative;
