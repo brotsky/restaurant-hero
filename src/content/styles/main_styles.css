@@ -1289,3 +1289,10 @@ padding: 0;
 .footer_about p{
 	font-size: 25px;
 }
+
+.cities
+{
+	text-align: center;
+	color: #a5a4a4;
+	font-size: 25px;
+}
