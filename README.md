@@ -1,13 +1,14 @@
 ## Current locations that are in development
+*${latest_preview_key}, can be found in #git, find the latest message `Successfully deployed 975ec30 to Preview` and click on the `Preview` hyperlink.*
 - Los Angeles, CA
 	- Production: https://restaurantherola.com
-	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=losangeles
+	- Preview: https://restaurant-hero-${latest_preview_key}.now.sh/?location=losangeles
 - New York, NY
 	- Production: https://nyc.restauranthero.org
-	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=nyc
+	- Preview: https://restaurant-hero-${latest_preview_key}.now.sh/?location=nyc
 - Houston, TX
 	- Production: https://restaurantherohtx.com
-	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=houston
+	- Preview: https://restaurant-hero-${latest_preview_key}.now.sh/?location=houston
 - Rochester, NY
 	- Production: Coming Soon...
 - Austin, TX
@@ -16,7 +17,7 @@
 	- Production: Coming Soon...
 - Seattle, WA
 	- Production: https://seattle.restauranthero.org
-	- Preview: https://restaurant-hero-cvwr42nvr.now.sh/?location=seattle
+	- Preview: https://restaurant-hero-${latest_preview_key}.now.sh/?location=seattle
 
 ## Join the Restaurant Hero Community!
 
