@@ -19,6 +19,7 @@ console.log('If you are developer and want to contribute or use this code for yo
 const googleForm = getGoogleForm();
 const googleSheet = getGoogleSheetUrl();
 const logo = getLogo();
+const DEFAULT_INSTAGRAM_POST = 'https://www.instagram.com/p/B-DiFXiFFU6/';
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
@@ -28,6 +29,7 @@ const MyFetchingComponent = () => {
   const cityKeys = Object.keys(countByCity);
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
+  const instagramPost = post.Instagram === '' ? DEFAULT_INSTAGRAM_POST : post.Instagram; 
 
   return (<div>
     <div class="container">
@@ -52,7 +54,6 @@ const MyFetchingComponent = () => {
 
     {filteredPosts.map((post, index) => (
       <article key={`post-${index}`}>
-        {post.Instagram !== '' && (
           
            <div class="intro">
            <div class="container">
@@ -62,7 +63,7 @@ const MyFetchingComponent = () => {
                     <InstagramEmbed
                       maxWidth={320}
                       className="insta"
-                      url={post.Instagram}
+                      url={instagramPost}
                       hideCaption={true}
                       containerTagName='div'
                       protocol=''
@@ -90,7 +91,7 @@ const MyFetchingComponent = () => {
          </div>)
         }
       </article>
-    ))}
+    )}
     {/* {
       visibleItems < filteredPosts.length && 
       <div class="container">
