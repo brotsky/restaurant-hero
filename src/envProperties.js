@@ -1,4 +1,5 @@
 const { host, search } = window.location;
+const {startsWith, endsWith } = require("lodash");
 
 const googleSheetLA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8sQyzK0GFOY3r6p_QQ-b6uprsMPN8uN9piRFPemLoJHI-JBshyzL4YtNIVjGem09ts-q3L55wu79E/pub?gid=0&single=true&output=tsv';
 const googleSheetHouston = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT3a2jeKTk--9jI0Zqdq9h7DbR_lF2Iu5AZwG3ZiPbejaRmJ_0uTiw-6ojM4AVoeBrQJIJwiOgBhG17/pub?gid=0&single=true&output=tsv';
@@ -23,7 +24,7 @@ function getEnvProperties () {
     properties = setProperties("nyc");
   } else if (host === 'seattle.restauranthero.org') {
     properties = setProperties("seattle");
-  } else if (host === 'restaurant-hero-cvwr42nvr.now.sh' || host === 'www.restaurant-hero-cvwr42nvr.now.sh') {
+  } else if ((startsWith(host,"restaurant-hero-",0) && endsWith(host,".now.sh")) || (startsWith(host,"www.restaurant-hero-",0) && endsWith(host,".now.sh"))) {
     let location = search.split("&")[0].split("=");
     if(location.length >= 2){
       properties = setProperties(location[1])
