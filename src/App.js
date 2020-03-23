@@ -46,7 +46,7 @@ const MyFetchingComponent = () => {
     </header>
     { filteredPosts.map((post, index) => (
     <article key={`post-${index}`}>
-      { post.Instagram !== '' && (
+      { post.City !== '' && (
         <div className="App-header">
           <div>
             { post.Restaurant && <h3>{post.Restaurant}</h3> }
