@@ -16,6 +16,7 @@ console.log('If you are developer and want to contribute or use this code for yo
 const googleSheet = getGoogleSheetUrl();
 const googleForm = getGoogleForm();
 const logo = getLogo();
+const DEFAULT_INSTAGRAM_POST = "https://www.instagram.com/p/B-DiFXiFFU6/";
 
 const MyFetchingComponent = () => {
   const [selectedCity, setSelectedCity] = useState('All');
@@ -25,6 +26,7 @@ const MyFetchingComponent = () => {
   const cityKeys = Object.keys(countByCity);
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
+  const instagramPost = post.Instagram === '' ? DEFAULT_INSTAGRAM_POST : post.Instagram; 
   
   return (<div>
     <header id="city-filter">
@@ -46,32 +48,31 @@ const MyFetchingComponent = () => {
     </header>
     { filteredPosts.map((post, index) => (
     <article key={`post-${index}`}>
-      { post.City !== '' && (
-        <div className="App-header">
-          <div>
-            { post.Restaurant && <h3>{post.Restaurant}</h3> }
-            { post.Tag && <h6>{post.Tag}</h6> }
-            { post.Location && <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5> }
-            { post.Phone && <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5> }
-          </div>
-          <LazyLoad height={600}>
-            <InstagramEmbed
-              maxWidth={320}
-              url={post.Instagram}
-              hideCaption={true}
-              containerTagName='div'
-              protocol=''
-              injectScript
-              onLoading={() => {}}
-              onSuccess={() => {}}
-              onAfterRender={() => {}}
-              onFailure={() => {}}
+    <div className="App-header">
+        <div>
+          { post.Restaurant && <h3>{post.Restaurant}</h3> }
+          { post.Tag && <h6>{post.Tag}</h6> }
+          { post.Location && <h5><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h5> }
+          { post.Phone && <h5><a href={`tel:${toString(post.Phone).replace(/\D/g,'')}`}>{post.Phone}</a></h5> }
+        </div>
+        <LazyLoad height={600}>
+          <InstagramEmbed
+            maxWidth={320}
+            url={instagramPost}
+            hideCaption={true}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
             />
           </LazyLoad>
         </div>)
         }
       </article>
-    )) }
+    ) }
   </div>)
 };
 
