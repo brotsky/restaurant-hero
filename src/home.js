@@ -29,7 +29,7 @@ const MyFetchingComponent = () => {
   const cityKeys = Object.keys(countByCity);
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
-  const instagramPost = post.Instagram === '' ? DEFAULT_INSTAGRAM_POST : post.Instagram; 
+ 
 
   return (<div>
     <div class="container">
@@ -52,7 +52,9 @@ const MyFetchingComponent = () => {
     </header>
     </div>
 
-    {filteredPosts.map((post, index) => (
+    {filteredPosts.map((post, index) => {
+    const instagramPost = post.Instagram === '' ? DEFAULT_INSTAGRAM_POST : post.Instagram;
+    return (
       <article key={`post-${index}`}>
           
            <div class="intro">
@@ -88,10 +90,10 @@ const MyFetchingComponent = () => {
               
              </div>
            </div>
-         </div>)
+           </div>)
         }
       </article>
-    )}
+    )})}
     {/* {
       visibleItems < filteredPosts.length && 
       <div class="container">
