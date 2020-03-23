@@ -9,11 +9,12 @@ const googleSheetSeattle = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTff
 const googleFormLA = 'https://docs.google.com/forms/d/e/1FAIpQLSfQQaZ3WqXUMtZquB18OJ2_CXaGmBqcWVJXW7atLqBGpNgd1w/viewform?usp=sf_link';
 const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbdStXoauiBe2G3GlB1gpMJSZyDv4v9iv_SX5KOA/viewform?usp=sf_link';
 const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
+const googleFormNYC = 'https://docs.google.com/forms/d/1Q0mqmXeZ7NeeAqYNzFtAtTl1wSkp8Iq9aR70XYfL_xk/viewform?usp=sf_link';
 
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
-const logoNewYork = '/restaurant-hero-logo-new-york.svg';
+const logoNewYork = '/restaurant-hero-logo-newyork.svg';
 
 function getEnvProperties () { 
   var properties = setProperties("losangeles");
@@ -52,6 +53,7 @@ function setProperties(location) {
     properties.logo = logoHouston;
   } else if (lowerCaseLocation === "nyc") {
     properties.googleSheet = googleSheetNYC;
+    properties.googleForm = googleFormNYC;
     properties.logo = logoNewYork;
   }
 
