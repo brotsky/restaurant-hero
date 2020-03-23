@@ -53,7 +53,6 @@ const citiesMap = {
 
 function getEnvProperties () { 
   let citiesMap = getCitiesMap();
-  let host=citiesMap.Houston.URLs[0];
   var properties = {
     logo: citiesMap.LosAngeles.Logo,
     googleForm: citiesMap.LosAngeles.GoogleForm,
