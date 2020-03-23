@@ -5,6 +5,7 @@
 - Rochester, NY
 - Austin, TX
 - New Jersey
+- Seattle, WA
 
 ## Join the Restaurant Hero Community!
 
