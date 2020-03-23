@@ -13,6 +13,7 @@ import { tsvJSON } from './tsvToJson';
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
 // default to LA
+DEFAULT_INSTAGRAM_POST = "https://www.instagram.com/p/B-DiFXiFFU6/";
 const googleSheet = getGoogleSheetUrl();
 const googleForm = getGoogleForm();
 const logo = getLogo();
@@ -25,6 +26,7 @@ const MyFetchingComponent = () => {
   const cityKeys = Object.keys(countByCity);
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
+  const instagramPost = post.Instagram !== '' ? DEFAULT_INSTAGRAM_POST : post.Instagram;
   
   return (<div>
     <header id="city-filter">
@@ -46,7 +48,7 @@ const MyFetchingComponent = () => {
     </header>
     { filteredPosts.map((post, index) => (
     <article key={`post-${index}`}>
-      { post.Instagram !== '' && (
+      { post.City !== '' && (
         <div className="App-header">
           <div>
             { post.Restaurant && <h3>{post.Restaurant}</h3> }
@@ -57,7 +59,7 @@ const MyFetchingComponent = () => {
           <LazyLoad height={600}>
             <InstagramEmbed
               maxWidth={320}
-              url={post.Instagram}
+              url= {instagramPost}
               hideCaption={true}
               containerTagName='div'
               protocol=''
