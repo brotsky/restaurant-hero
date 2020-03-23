@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import useFetch from 'fetch-suspense';
-import { shuffle, toString, countBy, trim, orderBy, startCase } from 'lodash';
+import { toString, countBy, orderBy } from 'lodash';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import LazyLoad from 'react-lazyload';
 import './content/styles/bootstrap-4.1.2/bootstrap.min.css'
