@@ -1289,3 +1289,7 @@ padding: 0;
 .footer_about p{
 	font-size: 25px;
 }
+
+#thank-you-list {
+	padding: 0;
+}
