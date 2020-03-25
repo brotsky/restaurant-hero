@@ -198,7 +198,7 @@ function Home() {
                       {'Website created with ❤️ by '}
                       <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
                       {' & '}
-                      <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
+                      <a href="https://www.linkedin.com/in/brandonbrotsky/" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
                     </p>
                     <p>
                       Special thanks to those who contributed code and/or graphics to this project:<br />
