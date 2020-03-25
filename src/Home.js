@@ -207,7 +207,7 @@ function Home() {
                         <li><a href="https://honeycombsoft.com/" target="_blank" rel="noopener noreferrer">Kostia Bondariev of Honeycomb</a></li>
                         <li><a href="http://www.linkedin.com/in/sallykim5" target="_blank" rel="noopener noreferrer">Sally Kim</a></li>
                         <li><a href="http://linkedin.com/in/bareinhard" target="_blank" rel="noopener noreferrer">Brett Reinhard</a></li>
-                        <li><a href="https://github.com/noahjanderson" target="_blank" rel="noopener noreferrer">Noah Anderson</a></li>
+                        <li><a href="https://portfolio.noahjanderson.com/" target="_blank" rel="noopener noreferrer">Noah Anderson</a></li>
                       </ul>
                       And to everyone that has helped add & moderate content, its too many list!
                     </p>
