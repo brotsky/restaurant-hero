@@ -29,7 +29,7 @@ const MyFetchingComponent = () => {
   const cityKeys = Object.keys(countByCity);
   const cities = orderBy(cityKeys.map(city => ({ name: city, count: countByCity[city] })), 'name');
   const filteredPosts = selectedCity === 'All' ? posts : posts.filter(post => post.City === selectedCity);
- 
+
   return (<div>
     <div className="container">
     <header id="city-filter">
@@ -198,8 +198,18 @@ function Home() {
                       {'Website created with ❤️ by '}
                       <a href="https://twitter.com/gbaroth" target="_blank" rel="noopener noreferrer">Greg Baroth</a>
                       {' & '}
-                      <a href="https://twitter.com/DownToBrotsky" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a><br />
-                      Special thanks to <a href="https://www.sherrod-designs.com/" target="_blank" rel="noopener noreferrer">Jordana Sherrod</a> for her awesome logo and graphic design contributions.
+                      <a href="https://www.linkedin.com/in/brandonbrotsky/" target="_blank" rel="noopener noreferrer">Brandon Brotsky</a>
+                    </p>
+                    <p>
+                      Special thanks to those who contributed code and/or graphics to this project:<br />
+                      <ul id="thank-you-list">
+                        <li><a href="https://www.sherrod-designs.com/" target="_blank" rel="noopener noreferrer">Jordana Sherrod</a></li>
+                        <li><a href="https://honeycombsoft.com/" target="_blank" rel="noopener noreferrer">Kostia Bondariev of Honeycomb</a></li>
+                        <li><a href="http://www.linkedin.com/in/sallykim5" target="_blank" rel="noopener noreferrer">Sally Kim</a></li>
+                        <li><a href="http://linkedin.com/in/bareinhard" target="_blank" rel="noopener noreferrer">Brett Reinhard</a></li>
+                        <li><a href="https://portfolio.noahjanderson.com/" target="_blank" rel="noopener noreferrer">Noah Anderson</a></li>
+                      </ul>
+                      And to everyone that has helped add & moderate content, its too many list!
                     </p>
               </div>
             </div>
