@@ -12,7 +12,8 @@ import './content/styles/responsive.css'
 import "./content/js/custom.js"
 import homeImg from './content/images/home.jpg'
 import { tsvJSON } from './tsvToJson';
-import { getGoogleSheetUrl, getLogo, getGoogleForm } from './envProperties';
+import { getGoogleSheetUrl, getLogo, getGoogleForm, isHomePage } from './envProperties';
+import Cities from './Cities';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
@@ -22,6 +23,7 @@ const logo = getLogo();
 const DEFAULT_INSTAGRAM_POST = 'https://www.instagram.com/p/B-DiFXiFFU6/';
 
 const MyFetchingComponent = () => {
+  
   const [selectedCity, setSelectedCity] = useState('All');
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
@@ -174,9 +176,15 @@ function Home() {
         <div className="scroll_icon"></div>
       </div>
       
-      <Suspense fallback="Loading...">
-        <MyFetchingComponent />
-      </Suspense>
+      
+      {
+      !isHomePage() ?
+        <Suspense fallback="Loading...">
+          <MyFetchingComponent />
+        </Suspense>
+      :
+        <Cities/>
+      }
 
       <footer className="footer">
         <div className="container">
