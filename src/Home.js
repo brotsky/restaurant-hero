@@ -23,7 +23,6 @@ const logo = getLogo();
 const DEFAULT_INSTAGRAM_POST = 'https://www.instagram.com/p/B-DiFXiFFU6/';
 
 const MyFetchingComponent = () => {
-  
   const [selectedCity, setSelectedCity] = useState('All');
   const response = useFetch(googleSheet, { method: 'GET' });
   const posts = tsvJSON(response);
