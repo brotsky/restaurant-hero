@@ -1,5 +1,5 @@
 ## Current locations that are in development
-*`${latest_preview_key}`, can be found our slack `#git` channel, find the latest message `Successfully deployed 975ec30 to Preview` and click on the `Preview` hyperlink.*
+*`${latest_preview_key}`, can be found at https://github.com/brotsky/restaurant-hero/deployments, simply click the `View Deployment` button Under `Deployed to Preview`*
 - Los Angeles, CA
 	- Production: https://restaurantherola.com
 	- Preview: https://restaurant-hero-${latest_preview_key}.now.sh/?location=losangeles

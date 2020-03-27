@@ -16,7 +16,43 @@ const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
 const logoNewYork = '/restaurant-hero-logo-newyork.svg';
 
-function getEnvProperties () { 
+const urlsLA = ['restaurantherola.com', 'www.restaurantherola.com'];
+const urlsHouston = ['restaurantherohtx.com', 'www.restaurantherohtx.com'];
+const urlsSeattle = ['seattle.restauranthero.org'];
+const urlsNYC = ['nyc.restauranthero.org'];
+
+const citiesMap = {
+  Houston:{
+      GoogleForm: googleFormHouston,
+      GoogleSheet: googleSheetHouston,
+      City: 'Houston',
+      Logo: logoHouston,
+      URLs: urlsHouston
+    },
+  LosAngeles: {
+      GoogleForm: googleFormLA,
+      GoogleSheet: googleSheetLA,
+      City: 'Los Angeles',
+      Logo: logoLA,
+      URLs: urlsLA
+  },
+  Seattle: {
+      GoogleForm: googleFormSeattle,
+      GoogleSheet: googleSheetSeattle,
+      City: 'Seattle',
+      Logo: logoSeattle,
+      URLs: urlsSeattle
+  },
+  NewYorkCity: {
+      GoogleForm: googleFormNYC,
+      GoogleSheet: googleSheetNYC,
+      City: 'New York City',
+      Logo: logoNewYork,
+      URLs: urlsNYC
+  }
+}
+
+function getEnvProperties() {
   var properties = setProperties("losangeles");
 
   if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
@@ -35,26 +71,28 @@ function getEnvProperties () {
   return properties;
 }
 
+
 function setProperties(location) {
   let lowerCaseLocation = location.toLowerCase();
+  let citiesMap = getCitiesMap();
   let properties = {
-    logo: logoLA,
-    googleForm: googleFormLA,
-    googleSheet: googleSheetLA
+    logo: citiesMap.LosAngeles.Logo,
+    googleForm: citiesMap.LosAngeles.GoogleForm,
+    googleSheet: citiesMap.LosAngeles.GoogleSheet
   };
 
   if(lowerCaseLocation === "seattle") {
-    properties.googleSheet = googleSheetSeattle;
-    properties.googleForm = googleFormSeattle;
-    properties.logo = logoSeattle;
+    properties.googleSheet = citiesMap.Seattle.GoogleSheet;
+    properties.googleForm = citiesMap.Seattle.GoogleForm;
+    properties.logo = citiesMap.Seattle.Logo;
   } else if (lowerCaseLocation === "houston") {
-    properties.googleSheet = googleSheetHouston;
-    properties.googleForm = googleFormHouston;
-    properties.logo = logoHouston;
+    properties.googleSheet = citiesMap.Houston.GoogleSheet;
+    properties.googleForm = citiesMap.Houston.GoogleForm;
+    properties.logo = citiesMap.Houston.Logo;
   } else if (lowerCaseLocation === "nyc") {
-    properties.googleSheet = googleSheetNYC;
-    properties.googleForm = googleFormNYC;
-    properties.logo = logoNewYork;
+    properties.googleSheet = citiesMap.NewYorkCity.GoogleSheet;
+    properties.googleForm = citiesMap.NewYorkCity.GoogleForm;
+    properties.logo = citiesMap.NewYorkCity.Logo;
   }
 
   return properties;
@@ -73,6 +111,19 @@ export function getGoogleForm() {
   return getEnvProperties().googleForm;
 }
 
+export function getCitiesMap() {
+  return citiesMap;
+}
 
+export function getCitiesArray() {
+  return Object.values(getCitiesMap());
+}
 
-
+export function isHomePage() {
+  let searchContents = search.split("&")[0].split("=");
+  let homePageFlag = "";
+  if(searchContents.length >= 2){
+    homePageFlag = searchContents[1].toLocaleLowerCase();
+  }
+  return host === 'restauranthero.org' || host === 'www.restauranthero.org' || homePageFlag === 'homepage';
+}

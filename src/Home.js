@@ -12,7 +12,8 @@ import './content/styles/responsive.css'
 import "./content/js/custom.js"
 import homeImg from './content/images/home.jpg'
 import { tsvJSON } from './tsvToJson';
-import { getGoogleSheetUrl, getLogo, getGoogleForm } from './envProperties';
+import { getGoogleSheetUrl, getLogo, getGoogleForm, isHomePage } from './envProperties';
+import Cities from './Cities';
 
 console.log('If you are developer and want to contribute or use this code for your city please go to https://github.com/brotsky/restaurant-hero');
 
@@ -174,9 +175,15 @@ function Home() {
         <div className="scroll_icon"></div>
       </div>
       
-      <Suspense fallback="Loading...">
-        <MyFetchingComponent />
-      </Suspense>
+      
+      {
+      !isHomePage() ?
+        <Suspense fallback="Loading...">
+          <MyFetchingComponent />
+        </Suspense>
+      :
+        <Cities/>
+      }
 
       <footer className="footer">
         <div className="container">
