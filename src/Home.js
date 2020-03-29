@@ -84,6 +84,7 @@ const MyFetchingComponent = () => {
                    <div className="intro_text">
                    {post.Location && <h4><a href={`https://maps.google.com/?q=${post.Location}`} target="_blank" rel="noopener noreferrer">{post.Location}</a></h4>}
                    {post.Phone && <h4><a href={`tel:${toString(post.Phone).replace(/\D/g, '')}`}>{post.Phone}</a></h4>}
+                   {post.Delivery && <h4><p>{post.Delivery}</p></h4>}
                    </div>
                  </div>
                </div>
@@ -118,7 +119,7 @@ function Home() {
                 <div className="logo">
                   <img className="logo" src={logo} alt="Restaurant Hero Logo" />
                 </div>
-                <a className="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a Restaurant</a>
+                {!isHomePage() && <a className="reservations_phone ml-auto" href={googleForm} target="_blank" rel="noopener noreferrer">Submit a Restaurant</a>}
               </div>
             </div>
           </div>

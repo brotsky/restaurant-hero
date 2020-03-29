@@ -11,6 +11,7 @@ const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbd
 const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
 const googleFormNYC = 'https://docs.google.com/forms/d/1Q0mqmXeZ7NeeAqYNzFtAtTl1wSkp8Iq9aR70XYfL_xk/viewform?usp=sf_link';
 
+const logoHomePage = '/restaurant-hero-logo-home-page.svg';
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
@@ -54,18 +55,19 @@ const citiesMap = {
 
 function getEnvProperties() {
   var properties = setProperties("losangeles");
-
   if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
     properties = setProperties("houston");
   } else if (host === 'nyc.restauranthero.org') {
     properties = setProperties("nyc");
   } else if (host === 'seattle.restauranthero.org') {
     properties = setProperties("seattle");
-  } else if ((startsWith(host,"restaurant-hero-",0) && endsWith(host,".now.sh")) || (startsWith(host,"www.restaurant-hero-",0) && endsWith(host,".now.sh"))) {
+  } else if ((startsWith(host,"restaurant-hero-",0) && endsWith(host,".now.sh")) || (startsWith(host,"www.restaurant-hero-",0) && endsWith(host,".now.sh")) || startsWith(host,"localhost")) {
     let location = search.split("&")[0].split("=");
     if(location.length >= 2){
       properties = setProperties(location[1])
     }
+  } else if (isHomePage()) {
+    properties = setProperties("homepage");
   }
 
   return properties;
@@ -93,6 +95,8 @@ function setProperties(location) {
     properties.googleSheet = citiesMap.NewYorkCity.GoogleSheet;
     properties.googleForm = citiesMap.NewYorkCity.GoogleForm;
     properties.logo = citiesMap.NewYorkCity.Logo;
+  } else if(lowerCaseLocation === "homepage") {
+    properties.logo = logoHomePage;
   }
 
   return properties;
