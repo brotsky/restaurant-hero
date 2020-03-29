@@ -55,7 +55,6 @@ const citiesMap = {
 
 function getEnvProperties() {
   var properties = setProperties("losangeles");
-console.log(host);
   if (host === 'restaurantherohtx.com' || host === 'www.restaurantherohtx.com') {
     properties = setProperties("houston");
   } else if (host === 'nyc.restauranthero.org') {
