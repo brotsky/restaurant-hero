@@ -11,7 +11,7 @@ const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbd
 const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
 const googleFormNYC = 'https://docs.google.com/forms/d/1Q0mqmXeZ7NeeAqYNzFtAtTl1wSkp8Iq9aR70XYfL_xk/viewform?usp=sf_link';
 
-const logoHomePage = '/restaurant-hero-logo-homepage.svg';
+const logoHomePage = '/restaurant-hero-logo-home-page.svg';
 const logoLA = '/restaurant-hero-logo.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
@@ -97,8 +97,6 @@ function setProperties(location) {
     properties.logo = citiesMap.NewYorkCity.Logo;
   } else if(lowerCaseLocation === "homepage") {
     properties.logo = logoHomePage;
-    delete properties.googleForm;
-    delete properties.googleSheet;
   }
 
   return properties;
