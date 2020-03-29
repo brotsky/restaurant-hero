@@ -11,7 +11,8 @@ const googleFormSeattle = 'https://docs.google.com/forms/d/e/1FAIpQLSeb94MlXgLbd
 const googleFormHouston = 'https://docs.google.com/forms/d/e/1FAIpQLSea8pZcPHhGCc_HzW_1a38FCZNIQznfgZmla3T4pf_DgVYEwA/viewform?usp=sf_link';
 const googleFormNYC = 'https://docs.google.com/forms/d/1Q0mqmXeZ7NeeAqYNzFtAtTl1wSkp8Iq9aR70XYfL_xk/viewform?usp=sf_link';
 
-const logoLA = '/restaurant-hero-logo.svg';
+const logoHomePage = '/restaurant-hero-logo.svg';
+const logoLA = '/restaurant-hero-logo-los-angeles.svg';
 const logoHouston = '/restaurant-hero-logo-houston.svg';
 const logoSeattle = '/restaurant-hero-logo-seattle.svg';
 const logoNewYork = '/restaurant-hero-logo-newyork.svg';
@@ -66,6 +67,8 @@ function getEnvProperties() {
     if(location.length >= 2){
       properties = setProperties(location[1])
     }
+  } else if (isHomePage()) {
+    properties = setProperties("homepage");
   }
 
   return properties;
@@ -93,6 +96,10 @@ function setProperties(location) {
     properties.googleSheet = citiesMap.NewYorkCity.GoogleSheet;
     properties.googleForm = citiesMap.NewYorkCity.GoogleForm;
     properties.logo = citiesMap.NewYorkCity.Logo;
+  } else if(lowerCaseLocation === "homepage") {
+    properties.logo = logoHomePage;
+    delete properties.googleForm;
+    delete properties.googleSheet;
   }
 
   return properties;
