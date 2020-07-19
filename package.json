@@ -15,7 +15,7 @@
     "fetch-suspense": "^1.2.2",
     "firebase": "^7.12.0",
     "jquery": "^3.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-device-detect": "^1.11.14",
